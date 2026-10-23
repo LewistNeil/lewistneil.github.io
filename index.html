@@ -231,8 +231,6 @@ img{max-width:100%;display:block}
   color:var(--accent2);border:1px solid rgba(242,179,76,.4);border-radius:4px;padding:2px 7px;
   white-space:nowrap;
 }
-/* optional screenshot slot: <img class="proj-shot" src="..." alt="..."> */
-.proj-shot{width:100%;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line)}
 .proj-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
 .proj h3{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.01em}
 .proj .problem{color:var(--text);font-size:.98rem}
@@ -248,6 +246,60 @@ img{max-width:100%;display:block}
   .projects{grid-template-columns:1fr}
   .proj.featured .proj-body{display:flex}
 }
+
+/* ---------- project photos (filled from PROJECT_PHOTOS in the script) ---------- */
+.proj-media{border-bottom:1px solid var(--line);background:#0B1020}
+.proj-media[hidden]{display:none}
+.proj-media .main{
+  display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;
+  background:none;cursor:zoom-in;overflow:hidden;
+}
+.proj-media .main img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.proj-media .main:hover img{transform:scale(1.02)}
+.proj.featured .proj-media .main{aspect-ratio:21/9}
+.proj-thumbs{
+  display:flex;gap:8px;padding:10px 14px;overflow-x:auto;
+  border-top:1px solid var(--line);scrollbar-width:thin;
+}
+.proj-thumbs button{
+  flex:0 0 auto;width:76px;aspect-ratio:16/9;padding:0;cursor:pointer;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;background:none;
+  opacity:.55;transition:opacity .15s ease,border-color .15s ease;
+}
+.proj-thumbs button:hover{opacity:.85}
+.proj-thumbs button[aria-current="true"]{border-color:var(--accent);opacity:1}
+.proj-thumbs img{width:100%;height:100%;object-fit:cover}
+.proj-media .placeholder{
+  aspect-ratio:16/9;display:grid;place-items:center;
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  background:repeating-linear-gradient(135deg,rgba(29,39,64,.35) 0 10px,transparent 10px 20px);
+}
+.proj.featured .proj-media .placeholder{aspect-ratio:21/9}
+@media(max-width:760px){
+  .proj.featured .proj-media .main,
+  .proj.featured .proj-media .placeholder{aspect-ratio:16/9}
+}
+
+/* ---------- photo viewer ---------- */
+.lightbox{
+  margin:auto;padding:0;max-width:min(1100px,94vw);max-height:92vh;
+  background:var(--bg-raised);color:var(--text);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+}
+.lightbox::backdrop{background:rgba(5,8,14,.86);backdrop-filter:blur(4px)}
+.lightbox img{max-width:100%;max-height:calc(92vh - 56px);width:auto;margin:0 auto}
+.lb-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+}
+.lb-nav{display:flex;gap:8px;flex-shrink:0}
+.lb-nav button{
+  font-family:var(--mono);font-size:12px;background:none;cursor:pointer;
+  border:1px solid var(--line);color:var(--text);border-radius:5px;padding:5px 11px;
+}
+.lb-nav button:hover{border-color:var(--accent);color:var(--accent)}
+.lb-nav button[hidden]{display:none}
 
 /* ---------- skills ---------- */
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
@@ -405,6 +457,7 @@ footer .dot{margin:0 6px 0 0}
     <h2>Things I've built</h2>
     <p class="intro">Side projects and internal tools — built logic-first, tested, then wired into a UI.</p>
 
+    <!-- Photos for these cards are set in PROJECT_PHOTOS near the bottom of this file. -->
     <div class="projects">
 
       <!-- Featured: Branch -->
@@ -413,7 +466,7 @@ footer .dot{margin:0 6px 0 0}
           <span class="path">~/projects/<span>branch</span></span>
           <span class="proj-tag">In development</span>
         </div>
-        <!-- Optional screenshot: <img class="proj-shot" src="img/branch.png" alt="Branch weekly planner showing a week of tasks"> -->
+        <div class="proj-media" data-project="branch" hidden></div>
         <div class="proj-body">
           <div class="lead">
             <h3>Branch</h3>
@@ -444,7 +497,7 @@ footer .dot{margin:0 6px 0 0}
           <span class="path">~/work/<span>team-board</span></span>
           <span class="proj-tag">In use</span>
         </div>
-        <!-- Optional screenshot: <img class="proj-shot" src="img/team-board.png" alt="Helpdesk team weekly task board"> -->
+        <div class="proj-media" data-project="team-board" hidden></div>
         <div class="proj-body">
           <h3>Helpdesk weekly task board</h3>
           <p class="problem">A shared board for my helpdesk team to plan the week's work and sort out weekend cover in one place.</p>
@@ -467,6 +520,7 @@ footer .dot{margin:0 6px 0 0}
           <span class="path">~/projects/<span>portfolio</span></span>
           <span class="proj-tag">Live</span>
         </div>
+        <div class="proj-media" data-project="portfolio" hidden></div>
         <div class="proj-body">
           <h3>This portfolio</h3>
           <p class="problem">A hand-built, dependency-free site designed around an ops-console aesthetic.</p>
@@ -627,8 +681,127 @@ footer .dot{margin:0 6px 0 0}
   <span class="dot" aria-hidden="true"></span>© <span id="year">2026</span> Lewis Neil
 </footer>
 
+<!-- photo viewer (opens when a project photo is clicked) -->
+<dialog class="lightbox" id="lightbox" aria-label="Project screenshot">
+  <img id="lbImg" alt="" />
+  <div class="lb-bar">
+    <span id="lbCap"></span>
+    <div class="lb-nav">
+      <button type="button" id="lbPrev" aria-label="Previous image">←</button>
+      <button type="button" id="lbNext" aria-label="Next image">→</button>
+      <button type="button" id="lbClose">close</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============================================================
+   PROJECT PHOTOS — add screenshots here when you have them.
+
+   1. Put image files in an "img" folder next to this page.
+   2. Add an entry to the project's list:
+        {src:'img/branch-week.png', alt:'What the image shows'}
+      Optional: caption:'Text shown in the enlarged view'
+   3. The first image is the cover. Add more and they appear
+      as thumbnails underneath. Clicking any photo enlarges it.
+
+   A project with an empty list just shows no photo.
+   Tip: 16:9 screenshots (e.g. 1600x900) fit best.
+   ============================================================ */
+var PROJECT_PHOTOS = {
+  'branch': [
+    // {src:'img/branch-week.png', alt:'Branch weekly planner showing a week of tasks'},
+    // {src:'img/branch-insights.png', alt:'Branch insights view with momentum score'},
+  ],
+  'team-board': [
+    // {src:'img/team-board.png', alt:'Helpdesk team weekly task board'},
+  ],
+  'portfolio': [
+    // {src:'img/portfolio.png', alt:'This portfolio site on desktop'},
+  ]
+};
+
+/* true = show striped "screenshot coming soon" boxes on cards with no photos yet
+   (handy while you're working on it; leave false for the live site) */
+var SHOW_PHOTO_PLACEHOLDERS = false;
+</script>
+
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
+
+/* ---------- project photos + viewer ---------- */
+(function(){
+  var lb=document.getElementById('lightbox'),
+      lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'),
+      prev=document.getElementById('lbPrev'),
+      next=document.getElementById('lbNext'),
+      closeBtn=document.getElementById('lbClose');
+  var cur=[],idx=0;
+
+  function show(i){
+    idx=(i+cur.length)%cur.length;
+    var p=cur[idx];
+    lbImg.src=p.src;lbImg.alt=p.alt||'';
+    lbCap.textContent=(p.caption||p.alt||'')+(cur.length>1?'  ·  '+(idx+1)+'/'+cur.length:'');
+    prev.hidden=next.hidden=cur.length<2;
+  }
+  function open(list,i){
+    cur=list;
+    if(typeof lb.showModal!=='function'){window.open(list[i].src,'_blank');return}
+    show(i);lb.showModal();
+  }
+  prev.addEventListener('click',function(){show(idx-1)});
+  next.addEventListener('click',function(){show(idx+1)});
+  closeBtn.addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){
+    if(cur.length<2)return;
+    if(e.key==='ArrowLeft')show(idx-1);
+    if(e.key==='ArrowRight')show(idx+1);
+  });
+
+  document.querySelectorAll('.proj-media[data-project]').forEach(function(box){
+    var list=((typeof PROJECT_PHOTOS!=='undefined'&&PROJECT_PHOTOS[box.dataset.project])||[])
+      .filter(function(p){return p&&p.src});
+
+    if(!list.length){
+      if(typeof SHOW_PHOTO_PLACEHOLDERS!=='undefined'&&SHOW_PHOTO_PLACEHOLDERS){
+        box.hidden=false;
+        box.innerHTML='<div class="placeholder">screenshot coming soon</div>';
+      }
+      return;
+    }
+
+    box.hidden=false;
+    var main=document.createElement('button');
+    main.type='button';main.className='main';
+    main.setAttribute('aria-label','Enlarge screenshot');
+    var img=document.createElement('img');
+    img.loading='lazy';img.decoding='async';
+    main.appendChild(img);box.appendChild(main);
+
+    var active=0,thumbs=[];
+    function select(i){
+      active=i;img.src=list[i].src;img.alt=list[i].alt||'';
+      thumbs.forEach(function(t,k){t.setAttribute('aria-current',k===i?'true':'false')});
+    }
+    if(list.length>1){
+      var strip=document.createElement('div');strip.className='proj-thumbs';
+      list.forEach(function(p,i){
+        var b=document.createElement('button');b.type='button';
+        b.setAttribute('aria-label','Show image '+(i+1)+(p.alt?': '+p.alt:''));
+        var t=document.createElement('img');t.src=p.src;t.alt='';t.loading='lazy';
+        b.appendChild(t);
+        b.addEventListener('click',function(){select(i)});
+        strip.appendChild(b);thumbs.push(b);
+      });
+      box.appendChild(strip);
+    }
+    main.addEventListener('click',function(){open(list,active)});
+    select(0);
+  });
+})();
 
 /* ---------- terminal typing (signature) ---------- */
 (function(){
