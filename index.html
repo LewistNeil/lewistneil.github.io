@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lewis Neil — IT Helpdesk Analyst</title>
-<meta name="description" content="Lewis Neil — IT Helpdesk Analyst at Central Co-op. Microsoft 365, Active Directory, Intune, Azure Virtual Desktop, ITIL v4 Foundation. Lichfield, UK." />
+<title>Lewis Neil — IT Support &amp; Operations</title>
+<meta name="description" content="Lewis Neil — Helpdesk Analyst at Central Co-op. Microsoft 365, Active Directory, Intune, Azure Virtual Desktop, PowerShell. ITIL v4 Foundation. Lichfield, UK." />
 
 <!-- Social preview (LinkedIn, Slack, Teams, etc.) -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Lewis Neil — IT Helpdesk Analyst" />
-<meta property="og:description" content="Microsoft 365, Active Directory, Intune and Azure Virtual Desktop support at Central Co-op. ITIL v4 Foundation. Builder of side projects." />
+<meta property="og:title" content="Lewis Neil — IT Support &amp; Operations" />
+<meta property="og:description" content="Helpdesk Analyst at Central Co-op supporting Microsoft 365, Active Directory, Intune and Azure Virtual Desktop. ITIL v4 Foundation, studying AZ-900 and AI-901." />
 <!-- TODO: once the site is live, add your real URL and a 1200x630 preview image (absolute URLs required):
 <meta property="og:url" content="https://YOUR-SITE-URL/" />
 <meta property="og:image" content="https://YOUR-SITE-URL/og-image.png" />
@@ -370,6 +370,31 @@ img{max-width:100%;display:block}
 }
 @media(max-width:760px){.certs{grid-template-columns:1fr}}
 
+/* in-progress certifications */
+.progress-certs{margin-top:34px}
+.progress-certs > h3,.courses > h3{
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+}
+.progress-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cert.study{padding:16px 18px;border-style:dashed}
+.cert.study .code{color:var(--accent);border-color:rgba(86,225,240,.4)}
+.cert.study h3{font-size:1rem}
+.cert.study h3 a{color:var(--text)}
+.cert.study h3 a:hover{color:var(--accent)}
+.status-pill{
+  display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+}
+.status-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 6px rgba(86,225,240,.7);animation:blink 1.6s ease-in-out infinite}
+.skill-card.wide{grid-column:1 / -1}
+.entry .tag{
+  display:inline-block;margin-left:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 6px;vertical-align:3px;
+}
+@media(max-width:760px){.progress-list{grid-template-columns:1fr}.skill-card.wide{grid-column:auto}}
+
 /* ---------- contact ---------- */
 .contact{text-align:center;border-bottom:none;padding-bottom:110px}
 .contact h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:14px}
@@ -417,13 +442,13 @@ footer .dot{margin:0 6px 0 0}
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="eyebrow">IT support · Microsoft 365 · ITIL v4</p>
+      <p class="eyebrow">IT support &amp; operations · Microsoft 365 · Azure</p>
       <h1>Lewis Neil<span class="tick">_</span></h1>
-      <p class="lede">IT Helpdesk Analyst at Central Co-op — keeping people working and systems healthy across Microsoft 365, Active Directory, Intune and Azure Virtual Desktop.</p>
+      <p class="lede">Helpdesk Analyst at Central Co-op, resolving escalated incidents across Microsoft 365, Active Directory, Intune and an Azure Virtual Desktop thin-client estate, and automating the repetitive bits with PowerShell.</p>
       <p class="loc"><span>&gt;</span> Lichfield, England, United Kingdom</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#projects">See what I've built</a>
-        <a class="btn btn-ghost" href="#experience">Experience</a>
+        <a class="btn btn-primary" href="#experience">View experience</a>
+        <a class="btn btn-ghost" href="#credentials">Certifications</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/lewistneil/" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
@@ -434,7 +459,7 @@ footer .dot{margin:0 6px 0 0}
         <i></i><i></i><i></i>
         <span class="term-title">lewis@ln-01 — bash</span>
       </div>
-      <p class="sr-only">Terminal introduction: Lewis Neil, IT Helpdesk Analyst at Central Co-op since October 2025. ITIL v4 Foundation certified. LinkedIn: linkedin.com/in/lewistneil.</p>
+      <p class="sr-only">Terminal introduction: Lewis Neil, Helpdesk Analyst at Central Co-op since October 2025. ITIL v4 Foundation certified, studying for AZ-900 and AI-901. LinkedIn: linkedin.com/in/lewistneil.</p>
       <div class="term-body" id="termBody" aria-hidden="true"></div>
     </div>
   </div>
@@ -445,8 +470,8 @@ footer .dot{margin:0 6px 0 0}
   <div class="wrap reveal">
     <p class="sec-eyebrow">about</p>
     <h2>Diagnose. Resolve. Document. Prevent.</h2>
-    <p>I'm an IT Helpdesk Analyst at Central Co-op, supporting internal users across a Microsoft estate — Microsoft 365, Active Directory, Intune and a 10ZiG thin client fleet on Azure Virtual Desktop — with incidents and service requests logged, prioritised and resolved through ISM to SLA, the ITIL v4 way.</p>
-    <p>Before IT, I earned a BSc (Hons) in Games Design &amp; Programming at Staffordshire University, consulted on market research for Supermassive Games, and led teams behind a bar and on volunteer projects in South Africa. The result: I can troubleshoot a mail-flow issue and talk a stressed user through it with equal comfort — and when a process is clunky, I'll build something better.</p>
+    <p>I'm a Helpdesk Analyst at Central Co-op, supporting Microsoft 365, Active Directory, Intune and a 10ZiG thin-client estate on Azure Virtual Desktop. I'm ITIL v4 Foundation certified, and I'm now working towards Microsoft Azure Fundamentals (AZ-900) and Azure AI Fundamentals (AI-901).</p>
+    <p>My BSc in Game Design &amp; Programming brings scripting, debugging and structured problem-solving to support work, and five years in customer-facing roles taught me to stay calm and clear with people under pressure. I'm keen to keep progressing across every area of IT.</p>
   </div>
 </section>
 
@@ -495,22 +520,49 @@ footer .dot{margin:0 6px 0 0}
     <div class="log">
       <article class="entry">
         <p class="meta">OCT 2025 — PRESENT</p>
-        <h3>IT Helpdesk Analyst </h3>
+        <h3>Helpdesk Analyst</h3>
         <p class="org">Central Co-op · Lichfield</p>
         <ul>
-          <li>Support a <strong>10ZiG thin client estate running Azure Virtual Desktop</strong>, troubleshooting device, connectivity and session issues for users across the business.</li>
-          <li>Administer <strong>Microsoft 365</strong> via the Admin Center — mailboxes, user provisioning and mail-flow troubleshooting — and manage accounts, access, onboarding/offboarding and permissions in <strong>Active Directory</strong>.</li>
-          <li>Manage company devices and mobiles with <strong>Microsoft Intune</strong>: configuration, policy enforcement, remote troubleshooting, and secure, compliant hardware and software deployment.</li>
-          <li>Log, prioritise and resolve incidents and service requests in <strong>ISM</strong> to SLA, following ITIL-aligned change management.</li>
-          <li>Work with wider IT teams and third-party vendors on complex issues, and keep documentation current so fixes stay fixed.</li>
+          <li>Resolve escalated incidents across <strong>Microsoft 365</strong>, <strong>Active Directory</strong> and <strong>Intune</strong>, logged and tracked in ISM.</li>
+          <li>Support the <strong>10ZiG thin-client estate on Azure Virtual Desktop</strong>, including time-sync, CMOS and power-loss recovery faults.</li>
+          <li>Diagnose wireless onboarding failures, tracing <strong>DHCP and 802.1X</strong> issues to the correct VLAN or authentication stage.</li>
+          <li>Write <strong>PowerShell</strong> to report on AD accounts and clean up stale user profiles to recover disk space.</li>
+          <li>Deploy and decommission hardware, including <strong>Lenovo ThinkShield secure wipe</strong> and Surface dock troubleshooting.</li>
+          <li>Produced end-user guides for Outlook templates in both classic and new Outlook.</li>
         </ul>
       </article>
       <article class="entry">
-        <p class="meta">AUG 2025 — OCT 2025</p>
-        <h3>Student Consultant</h3>
-        <p class="org">Impact Consulting × Supermassive Games</p>
+        <p class="meta">AUG 2025 — SEP 2025</p>
+        <h3>Student Consultant <span class="tag">Internship</span></h3>
+        <p class="org">Supermassive Games, with Impact Consulting</p>
         <ul>
-          <li>Researched the international horror gaming market and delivered a report to help shape Supermassive Games' future projects.</li>
+          <li>Researched and presented strategic insights on the international games market.</li>
+        </ul>
+      </article>
+      <article class="entry">
+        <p class="meta">JUN 2025 — JUL 2025</p>
+        <h3>Designer &amp; Programmer <span class="tag">Internship</span></h3>
+        <p class="org">Oatcake Interactive</p>
+        <ul>
+          <li>Built and debugged Fortnite (UEFN) game modes in Unreal Engine 5.</li>
+          <li>Found and fixed bugs through structured testing and iteration.</li>
+        </ul>
+      </article>
+      <article class="entry">
+        <p class="meta">MAR 2024 — MAY 2024</p>
+        <h3>Senior Designer</h3>
+        <p class="org">Staffordshire University team project</p>
+        <ul>
+          <li>Led junior designers and coordinated tasks in Jira and Trello.</li>
+          <li>Built gameplay systems with visual scripting in Unreal Engine 5.</li>
+        </ul>
+      </article>
+      <article class="entry">
+        <p class="meta">5+ YEARS</p>
+        <h3>Customer service roles</h3>
+        <p class="org">Staffordshire Students' Union · Waitrose · Ego Mediterranean · RTOSC</p>
+        <ul>
+          <li>Bar Team Leader and Events Planning Manager: handled customers calmly under pressure, the same skills used on a service desk.</li>
         </ul>
       </article>
     </div>
@@ -524,48 +576,64 @@ footer .dot{margin:0 6px 0 0}
     <h2>Stack &amp; skill set</h2>
     <div class="skills">
       <div class="skill-card">
-        <h3><span>01</span>Microsoft estate</h3>
+        <h3><span>01</span>Identity &amp; endpoint</h3>
         <div class="chips">
-          <span class="chip">Microsoft 365 Admin Center</span>
-          <span class="chip">Active Directory</span>
+          <span class="chip">Active Directory (users, groups, OUs)</span>
           <span class="chip">Microsoft Intune</span>
-          <span class="chip">Mail-flow troubleshooting</span>
-          <span class="chip">User provisioning</span>
+          <span class="chip">Group Policy</span>
+          <span class="chip">Windows 10/11 profile management</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3><span>02</span>Service management</h3>
+        <h3><span>02</span>Microsoft 365</h3>
         <div class="chips">
-          <span class="chip">ITIL v4</span>
-          <span class="chip">Incident management</span>
-          <span class="chip">Service requests (ISM)</span>
-          <span class="chip">SLA adherence</span>
-          <span class="chip">Change management</span>
-          <span class="chip">Documentation</span>
+          <span class="chip">Exchange Online &amp; Outlook</span>
+          <span class="chip">OneDrive / SharePoint</span>
+          <span class="chip">Teams</span>
+          <span class="chip">Office apps</span>
+          <span class="chip">Copilot troubleshooting</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3><span>03</span>End-user computing</h3>
+        <h3><span>03</span>Virtual desktop &amp; hardware</h3>
         <div class="chips">
           <span class="chip">Azure Virtual Desktop</span>
           <span class="chip">10ZiG thin clients</span>
-          <span class="chip">Mobile device management</span>
-          <span class="chip">Policy enforcement</span>
-          <span class="chip">Remote troubleshooting</span>
-          <span class="chip">Hardware &amp; software deployment</span>
+          <span class="chip">Lenovo &amp; Surface devices</span>
+          <span class="chip">Docks</span>
+          <span class="chip">Secure wipe &amp; decommissioning</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3><span>04</span>Building &amp; scripting</h3>
+        <h3><span>04</span>Scripting &amp; tools</h3>
         <div class="chips">
-          <span class="chip">JavaScript</span>
-          <span class="chip">HTML &amp; CSS</span>
-          <span class="chip">Electron</span>
-          <span class="chip">Supabase / Postgres</span>
-          <span class="chip">Docker</span>
+          <span class="chip">PowerShell</span>
           <span class="chip">Python</span>
-          <span class="chip">Git &amp; GitHub</span>
-          <span class="chip">Software testing / QA</span>
+          <span class="chip">C#</span>
+          <span class="chip">C++</span>
+          <span class="chip">HTML, CSS &amp; JavaScript</span>
+          <span class="chip">Git / GitHub</span>
+          <span class="chip">Visual Studio</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span>05</span>Service management</h3>
+        <div class="chips">
+          <span class="chip">ITIL v4</span>
+          <span class="chip">ISM ticketing</span>
+          <span class="chip">Incident &amp; request handling</span>
+          <span class="chip">End-user documentation</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Trello</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span>06</span>Networking</h3>
+        <div class="chips">
+          <span class="chip">DHCP</span>
+          <span class="chip">802.1X authentication</span>
+          <span class="chip">VLANs</span>
+          <span class="chip">Wireless onboarding</span>
         </div>
       </div>
     </div>
@@ -582,24 +650,52 @@ footer .dot{margin:0 6px 0 0}
         <span class="code">ITIL</span>
         <div>
           <h3>ITIL® v4 Foundation</h3>
-          <p class="issuer">IT service management framework</p>
-          <p class="desc">The framework behind how I handle incidents, requests and change day to day — value-focused, documented and measurable.</p>
+          <p class="issuer">AXELOS / PeopleCert</p>
+          <p class="desc">The framework behind how I handle incidents, requests and change day to day: value-focused, documented and measurable.</p>
         </div>
       </div>
       <div class="cert">
         <span class="code">BSc</span>
         <div>
-          <h3>BSc (Hons) Games Design &amp; Programming</h3>
-          <p class="issuer">Staffordshire University · 2021 — 2024</p>
-          <p class="desc">Programming, systems design and shipping software to a deadline.</p>
+          <h3>BSc (Hons) Game Design &amp; Programming</h3>
+          <p class="issuer">Staffordshire University · 2024</p>
+          <p class="desc">Programming, debugging, systems design and shipping software to a deadline.</p>
+        </div>
+      </div>
+      <div class="cert">
+        <span class="code">DIP</span>
+        <div>
+          <h3>Extended Diploma in Digital Media (Game Development)</h3>
+          <p class="issuer">Burton &amp; South Derbyshire College · 2021</p>
         </div>
       </div>
     </div>
+
+    <div class="progress-certs">
+      <h3>Currently studying</h3>
+      <div class="progress-list">
+        <div class="cert study">
+          <span class="code">AZ-900</span>
+          <div>
+            <h3><a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener">Microsoft Azure Fundamentals ↗</a></h3>
+            <p class="status-pill">In progress</p>
+          </div>
+        </div>
+        <div class="cert study">
+          <span class="code">AI-901</span>
+          <div>
+            <h3><a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/" target="_blank" rel="noopener">Microsoft Azure AI Fundamentals ↗</a></h3>
+            <p class="status-pill">In progress</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="courses">
       <h3>Short courses</h3>
       <ul>
-        <li>Python for Non-Programmers</li>
         <li>Programming Foundations: Software Testing / QA</li>
+        <li>Python for Non-Programmers</li>
         <li>What Is Generative AI?</li>
       </ul>
     </div>
@@ -747,11 +843,12 @@ document.getElementById('year').textContent=new Date().getFullYear();
   var PROMPT='lewis@ln-01:~$ ';
   var SCRIPT=[
     {t:'cmd',s:'whoami'},
-    {t:'out',s:'Lewis Neil — IT Helpdesk Analyst',c:'t-out'},
+    {t:'out',s:'Lewis Neil — Helpdesk Analyst',c:'t-out'},
     {t:'cmd',s:'systemctl status career.service'},
     {t:'out',s:'● career.service — active (running)',c:'t-ok'},
     {t:'out',s:'   Loaded: Central Co-op · Helpdesk (Oct 2025 → now)',c:'t-out'},
     {t:'out',s:'   Certs: ITIL v4 Foundation',c:'t-out'},
+    {t:'out',s:'   Next:  AZ-900 · AI-901 (in progress)',c:'t-out'},
     {t:'cmd',s:'./contact --linkedin'},
     {t:'out',s:'→ linkedin.com/in/lewistneil',c:'t-link'}
   ];
