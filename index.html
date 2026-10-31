@@ -337,6 +337,33 @@ img{max-width:100%;display:block}
 .entry ul li strong{color:var(--text);font-weight:500}
 @media(max-width:520px){.log{padding-left:24px}.entry::before{left:-29px}}
 
+/* hover focus: the hovered role lifts and expands, everything else blurs */
+@media (hover:hover) and (pointer:fine){
+  .entry{
+    padding:18px 22px;margin:-18px -22px;border-radius:12px;
+    border:1px solid transparent;transform-origin:left center;max-width:820px;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease,box-shadow .3s ease;
+  }
+  .entry::before{left:-17px;top:26px;transition:box-shadow .3s ease}
+  .entry:hover,.entry:focus-visible{
+    z-index:60;transform:scale(1.05);
+    background:var(--bg-raised);border-color:rgba(86,225,240,.35);
+    box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(86,225,240,.08);
+    outline:none;
+  }
+  .entry:hover::before,.entry:focus-visible::before{box-shadow:0 0 0 6px var(--accent-dim),0 0 14px rgba(86,225,240,.8)}
+  body::after{
+    content:"";position:fixed;inset:0;z-index:55;pointer-events:none;opacity:0;
+    background:rgba(5,8,14,.45);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    transition:opacity .3s ease;
+  }
+  body:has(.entry:hover)::after,body:has(.entry:focus-visible)::after{opacity:1}
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:reduce){
+  .entry:hover,.entry:focus-visible{transform:none}
+}
+
 /* ---------- credentials ---------- */
 .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
 .cert{
@@ -518,7 +545,7 @@ footer .dot{margin:0 6px 0 0}
     <p class="sec-eyebrow">work log</p>
     <h2>Experience</h2>
     <div class="log">
-      <article class="entry">
+      <article class="entry" tabindex="0">
         <p class="meta">OCT 2025 — PRESENT</p>
         <h3>Helpdesk Analyst</h3>
         <p class="org">Central Co-op · Lichfield</p>
@@ -531,7 +558,7 @@ footer .dot{margin:0 6px 0 0}
           <li>Produced end-user guides for Outlook templates in both classic and new Outlook.</li>
         </ul>
       </article>
-      <article class="entry">
+      <article class="entry" tabindex="0">
         <p class="meta">AUG 2025 — SEP 2025</p>
         <h3>Student Consultant <span class="tag">Internship</span></h3>
         <p class="org">Supermassive Games, with Impact Consulting</p>
