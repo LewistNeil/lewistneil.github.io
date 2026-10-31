@@ -460,62 +460,8 @@ footer .dot{margin:0 6px 0 0}
     <!-- Photos for these cards are set in PROJECT_PHOTOS near the bottom of this file. -->
     <div class="projects">
 
-      <!-- Featured: Branch -->
-      <article class="proj featured">
-        <div class="proj-bar">
-          <span class="path">~/projects/<span>branch</span></span>
-          <span class="proj-tag">In development</span>
-        </div>
-        <div class="proj-media" data-project="branch" hidden></div>
-        <div class="proj-body">
-          <div class="lead">
-            <h3>Branch</h3>
-            <p class="problem">A desktop week-by-week task planner — built to make planning the week fast, and to show you how the week actually went.</p>
-            <div class="chips">
-              <span class="chip">Electron</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">Postgres</span>
-              <span class="chip">Supabase stack</span>
-              <span class="chip">Docker Compose</span>
-            </div>
-            <!-- Add links when ready:
-            <div class="proj-links"><a href="https://github.com/..." target="_blank" rel="noopener">Repo ↗</a><a href="..." target="_blank" rel="noopener">Trailer ↗</a></div>
-            -->
-          </div>
-          <ul>
-            <li>Ctrl-K command palette with fuzzy matching and quick-add task syntax</li>
-            <li>Insights view with a momentum score and per-week analytics</li>
-            <li>Self-hostable backend via Docker Compose — Postgres, GoTrue auth, PostgREST, Realtime and Kong</li>
-            <li>Cinematic HTML/CSS/JS product trailer built from the app's own design palette</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Team task board -->
-      <article class="proj">
-        <div class="proj-bar">
-          <span class="path">~/work/<span>team-board</span></span>
-          <span class="proj-tag">In use</span>
-        </div>
-        <div class="proj-media" data-project="team-board" hidden></div>
-        <div class="proj-body">
-          <h3>Helpdesk weekly task board</h3>
-          <p class="problem">A shared board for my helpdesk team to plan the week's work and sort out weekend cover in one place.</p>
-          <ul>
-            <li>Real-time sync across the team via Supabase</li>
-            <li>Weekend cover / claim system with pre-seeded weekend tasks</li>
-            <li>Started as a static HTML page, iterated into a live shared tool</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">JavaScript</span>
-            <span class="chip">Supabase</span>
-            <span class="chip">GitHub Pages</span>
-          </div>
-        </div>
-      </article>
-
       <!-- This site -->
-      <article class="proj">
+      <article class="proj" style="grid-column:1 / -1">
         <div class="proj-bar">
           <span class="path">~/projects/<span>portfolio</span></span>
           <span class="proj-tag">Live</span>
@@ -709,13 +655,6 @@ footer .dot{margin:0 6px 0 0}
    Tip: 16:9 screenshots (e.g. 1600x900) fit best.
    ============================================================ */
 var PROJECT_PHOTOS = {
-  'branch': [
-    // {src:'img/branch-week.png', alt:'Branch weekly planner showing a week of tasks'},
-    // {src:'img/branch-insights.png', alt:'Branch insights view with momentum score'},
-  ],
-  'team-board': [
-    // {src:'img/team-board.png', alt:'Helpdesk team weekly task board'},
-  ],
   'portfolio': [
     // {src:'img/portfolio.png', alt:'This portfolio site on desktop'},
   ]
